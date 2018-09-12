@@ -21,7 +21,7 @@ var endMessages = [
 	'Spying your browser history',
 	'Trying to crack your account password',
 	'installing rootkit',
-	'Wiping out your hard drive'
+	'Wiping out your hard drive',
 	'Data saved. Have a nice day.',
 	'Data saved. Have a nice day.',
 	'It is now safe to to turn off your computer.',
@@ -43,7 +43,7 @@ function load() {
 	ground = createGround();
 	dino = ga.sprite('dinozarek.png');
 	cactus = ga.sprite('kaktus.png');
-	glitch = ga.rectangle(64, 64, 'red', '', 0, 350, floorY - 32);
+	glitch = ga.rectangle(64, 64, 'red', '', 0, 360, floorY - 32);
 	pointsLabel = ga.text('0', '16px serif', 'black', 250, 20);
 	dino.x = 8;
 	dino.y = floorY;
@@ -135,7 +135,7 @@ function game() {
 	} else {
 		dino.y = Math.min(floorY, dino.y + 4);
 	}
-	if (points <= 13) {
+	if (points < 13) {
 		cactus.x -= scrollSpeed / ga.fps;
 		if (cactus.x < -30) {
 			score();
@@ -155,7 +155,7 @@ function game() {
 
 function endGame() {
 	time += 1 / ga.fps;
-	var i = Math.min(endMessages.length - 1, Math.floor(time / 3));
+	var i = Math.min(endMessages.length - 1, Math.floor(time / 3.5));
 	endLabel.content = endMessages[i];
 	ga.canvas.ctx.font = endLabel.font;
 	endLabel.x = (ga.stage.width - endLabel.width) * 0.5;
